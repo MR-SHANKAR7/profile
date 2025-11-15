@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saadi Yassin - CV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #3B9797;
+            --secondary: #16476A;
+            --dark: #132440;
+            --accent: #BF092F;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--dark), var(--secondary));
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(59, 151, 151, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(191, 9, 47, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(22, 71, 106, 0.1) 0%, transparent 30%);
+            z-index: -1;
+        }
+        
+        .cv-container {
+            max-width: 1100px;
+            width: 100%;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            display: flex;
+            overflow: hidden;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 1s forwards 0.5s;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            position: relative;
+        }
+        
+        .cv-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Left Column */
+        .left-column {
+            flex: 1;
+            background: linear-gradient(to bottom, var(--secondary), var(--dark));
+            color: white;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .left-column::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            overflow: hidden;
+            border: 5px solid rgba(59, 151, 151, 0.7);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            animation: pulse 2s infinite;
+        }
+        
+        .profile-image:hover {
+            transform: scale(1.05) rotate(2deg);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            animation: none;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+            50% { box-shadow: 0 5px 25px rgba(59, 151, 151, 0.5); }
+            100% { box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .profile-image:hover img {
+            transform: scale(1.1);
+        }
+        
+        .name-section {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .name-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+        
+        .first-name {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: textGlow 3s infinite alternate;
+        }
+        
+        @keyframes textGlow {
+            from { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); }
+            to { text-shadow: 2px 2px 10px rgba(59, 151, 151, 0.7); }
+        }
+        
+        .last-name {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            font-weight: 400;
+            background: rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .section {
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideInLeft 0.8s forwards;
+        }
+        
+        .section:nth-child(2) { animation-delay: 0.3s; }
+        .section:nth-child(3) { animation-delay: 0.5s; }
+        .section:nth-child(4) { animation-delay: 0.7s; }
+        .section:nth-child(5) { animation-delay: 0.9s; }
+        
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-bottom: 8px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .section:hover .section-title::after {
+            width: 80px;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-info p:hover {
+            transform: translateX(5px);
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+            color: var(--primary);
+        }
+        
+        .skills-list {
+            list-style-type: none;
+        }
+        
+        .skills-list li {
+            margin-bottom: 8px;
+            padding-left: 10px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .skills-list li:hover {
+            transform: translateX(5px);
+        }
+        
+        .skills-list li:before {
+            content: "▸";
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .skills-list li:hover:before {
+            transform: translateX(3px);
+        }
+        
+        .languages {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .language-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .interest-tag {
+            background: rgba(59, 151, 151, 0.3);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .interest-tag:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        /* Right Column */
+        .right-column {
+            flex: 2;
+            padding: 30px;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: slideInRight 0.8s forwards 1s;
+        }
+        
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .profile-section {
+            margin-bottom: 30px;
+        }
+        
+        .profile-text {
+            text-align: justify;
+            line-height: 1.7;
+            background: rgba(59, 151, 151, 0.1);
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .profile-text:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+            border-radius: 2px;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUpItem 0.8s forwards;
+        }
+        
+        .timeline-item:nth-child(1) { animation-delay: 1.2s; }
+        .timeline-item:nth-child(2) { animation-delay: 1.4s; }
+        .timeline-item:nth-child(3) { animation-delay: 1.6s; }
+        .timeline-item:nth-child(4) { animation-delay: 1.8s; }
+        
+        @keyframes fadeInUpItem {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .timeline-item:before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover:before {
+            background: var(--accent);
+            transform: scale(1.3);
+        }
+        
+        .timeline-date {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+            background: #eef5ff;
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-date {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .timeline-content {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 3px solid var(--primary);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .timeline-item:hover .timeline-content {
+            transform: translateX(5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--accent);
+        }
+        
+        .timeline-content h3 {
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content p {
+            margin-bottom: 5px;
+            color: #555;
+        }
+        
+        .experience-details {
+            margin-top: 10px;
+            padding-left: 15px;
+        }
+        
+        .experience-details li {
+            margin-bottom: 5px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .experience-details li:hover {
+            transform: translateX(5px);
+        }
+        
+        .experience-details li:before {
+            content: "•";
+            color: var(--primary);
+            position: absolute;
+            left: -10px;
+        }
+        
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(59, 151, 151, 0.4);
+            overflow: hidden;
+            position: relative;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 151, 151, 0.6);
+        }
+        
+        .download-btn:active {
+            transform: translateY(1px);
+        }
+        
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .download-btn:hover::before {
+            left: 100%;
+        }
+        
+        .download-btn i {
+            margin-right: 8px;
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(59, 151, 151, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000%) rotate(720deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--dark);
+            color: white;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeIn 1s forwards 1.5s;
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        footer p {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background: var(--primary);
+            box-shadow: 0 5px 15px rgba(59, 151, 151, 0.4);
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+        
+        .social-links a:hover::before {
+            left: 100%;
+        }
+        
+        .social-links a i {
+            font-size: 1.2rem;
+        }
+        
+        .color-accent {
+            color: var(--accent);
+        }
+        
+        .color-primary {
+            color: var(--primary);
+        }
+        
+        .color-secondary {
+            color: var(--secondary);
+        }
+        
+        .color-dark {
+            color: var(--dark);
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+                background: white;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                margin: 0;
+            }
+            
+            .download-btn {
+                display: none;
+            }
+            
+            .floating-elements {
+                display: none;
+            }
+            
+            footer {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .cv-container {
+                flex-direction: column;
+            }
+            
+            .left-column, .right-column {
+                padding: 20px;
+            }
+            
+            .first-name, .last-name {
+                font-size: 2rem;
+            }
+            
+            .social-links {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating background elements -->
+    <div class="floating-elements" id="floatingElements"></div>
+    
+    <div class="cv-container">
+        <!-- Left Column -->
+        <div class="left-column">
+            <div class="profile-image">
+                <img src="https://res.cloudinary.com/dcq3dq2dq/image/upload/v1762015171/team-1_m4esb7.png" alt="Saadi Yassin">
+            </div>
+            
+            <div class="name-section">
+                <div class="first-name">SAADI</div>
+                <div class="last-name">YASSIN</div>
+                <div class="title">Développeur</div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-user"></i>
+                    <span>Profil</span>
+                </div>
+                <div class="profile-text">
+                    Développeur passionné avec une solide expérience en informatique et compétences en développement web. Motivé par l'apprentissage continu et la résolution de problèmes complexes.
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-address-book"></i>
+                    <span>Coordonnées</span>
+                </div>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> +212627070443</p>
+                    <p><i class="fas fa-envelope"></i> saaqiyassin77@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Ouazzane . Ouannana</p>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-language"></i>
+                    <span>Langues</span>
+                </div>
+                <div class="languages">
+                    <div class="language-item">
+                        <span>Arabe</span>
+                        <span>Langue maternelle</span>
+                    </div>
+                    <div class="language-item">
+                        <span>Français</span>
+                        <span>Moyen</span>
+                    </div>
+                    <div class="language-item">
+                        <span>Anglais</span>
+                        <span>Moyen</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-cogs"></i>
+                    <span>Compétences</span>
+                </div>
+                <ul class="skills-list">
+                    <li>Microsoft Office (Word, Excel, PowerPoint, Outlook)</li>
+                    <li>Computer Literacy (Informatique de base)</li>
+                    <li>Data Entry (Saisie de données)</li>
+                    <li>Systèmes D'exploitation (Windows, Linux)</li>
+                    <li>Création de sites web (HTML, CSS, Python)</li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-heart"></i>
+                    <span>Centres d'intérêt</span>
+                </div>
+                <div class="interests">
+                    <div class="interest-tag">Lecture</div>
+                    <div class="interest-tag">Voyage</div>
+                    <div class="interest-tag">Programmation</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column -->
+        <div class="right-column">
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Formation</span>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2024-2025</div>
+                        <div class="timeline-content">
+                            <h3>BAC +2 en Droit Public - Gestion des Affaires</h3>
+                            <p>Université Abdelmalek Essaâdi, Tanger</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023</div>
+                        <div class="timeline-content">
+                            <h3>BAC Sciences Humaines</h3>
+                            <p>Bin nassar, Tanger</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023</div>
+                        <div class="timeline-content">
+                            <h3>Diplôme en Informatique</h3>
+                            <p>ma3arf, Tanger</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <div class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Expérience Professionnelle</span>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 - Présent</div>
+                        <div class="timeline-content">
+                            <h3>Scanner Man</h3>
+                            <p>Jacob Delafon - Kohler Co</p>
+                            <ul class="experience-details">
+                                <li>Scannage et saisie de la production et rebut dans le coulage vitreous & HPS & grès</li>
+                                <li>L'inventaire quotidien des pièces à émailler</li>
+                                <li>Préparation des résultats et rendement journalier</li>
+                                <li>Imprimer et gérer le stock de code-à-barre</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020 - 2023</div>
+                        <div class="timeline-content">
+                            <h3>Couleur (Coulage Vitreous)</h3>
+                            <p>Jacob Delafon - Kohler Co</p>
+                            <p>Zone Industrielle, Route de Tétouan - Tanger</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2019-2020</div>
+                        <div class="timeline-content">
+                            <h3>Travailleur en Comptabilité</h3>
+                            <p>Abdou frisse - Tanger / Plaza Toro</p>
+                            <p>1 an de travail au traiteur "Hôtel"</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2018</div>
+                        <div class="timeline-content">
+                            <h3>Usine de Chaussures</h3>
+                            <p>Ouazzane</p>
+                            <p>6 mois de travail à l'usine de chaussures</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- زر التحميل المعدل -->
+            <a href="https://www.mediafire.com/file/xtr39frkvlkgw1d/CV_Fran%25C3%25A7ais_Simple_Moderne_Bleu.pdf/file" class="download-btn" target="_blank">
+                <i class="fas fa-download"></i> Télécharger le CV en PDF
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Saadi Yassin - Tous droits réservés</p>
+        <div class="social-links">
+            <a href="https://linkedin.com/in/yassinesaadi" target="_blank">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://github.com/MR-SHANKAR7" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="mailto:saadiyassin77@gmail.com">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        // Create floating elements for background
+        const floatingContainer = document.getElementById('floatingElements');
+        for (let i = 0; i < 20; i++) {
+            const element = document.createElement('div');
+            element.classList.add('floating-element');
+            
+            // Random properties
+            const size = Math.random() * 100 + 10;
+            const left = Math.random() * 100;
+            const animationDuration = Math.random() * 20 + 10;
+            const animationDelay = Math.random() * 5;
+            
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            element.style.left = `${left}%`;
+            element.style.animationDuration = `${animationDuration}s`;
+            element.style.animationDelay = `${animationDelay}s`;
+            
+            floatingContainer.appendChild(element);
+        }
+    </script>
+</body>
+</html>
